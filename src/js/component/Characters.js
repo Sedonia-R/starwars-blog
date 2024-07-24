@@ -1,65 +1,51 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { Context } from '../store/appContext';
 
 export const Characters = () => {
+    const { store, actions } = useContext(Context);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        actions.getPeople();
+    }, []);
+
     return (
-        <div className="row row-cols-1 row-cols-md-3 g-4">
-            <div className="col">
-                <div className="card h-100">
-                    <img src="https://starwars-visualguide.com/assets/img/characters/1.jpg" className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title"><strong>Luke Skywalker</strong></h5>
-                        <p className="card-text">
-                            <pre>
-                                Birth Year: 19BBY{"\n"}
-                                Species: Unknown{"\n"}
-                                Homeworld: Tatooine{"\n"}
-                            </pre>
-                        </p>
-                        <div className="row">
-                            <button 
-                                className='btn btn-primary col-5 m-auto'
-                                onClick={
-                                    () => navigate("/single/:1")
-                                }
-                            >
-                                Learn more!
-                            </button>
-                            {/* <div className='col-2'></div> */}
-                            <button className='btn btn-black col-2 m-auto p-auto border border-warning'>💛</button>
+        <div className="card-group card-group-scroll">   
+            {store.people.map((person, index) => {
+                return (
+                    <div className="card p-2 rounded" key={index}>
+                        <img 
+                            src={`https://starwars-visualguide.com/assets/img/characters/${person.uid}.jpg`} 
+                            className="card-img-top" 
+                            alt={`Picture of character ${person.properties.name}`}
+                            onError={event => {
+                                event.target.src = "https://starwars-visualguide.com/assets/img/big-placeholder.jpg"
+                                event.onerror = null
+                            }}
+                        />
+                        <div className="card-body">
+                            <h5 className="card-title"><strong>{person.properties.name}</strong></h5>
+                            <ul className="card-text">
+                                <li>Birth Year: {person.properties.birth_year}</li>
+                                <li>Height: {person.properties.height}</li>
+                                <li>Mass: {person.properties.mass}</li>
+                            </ul>
+                            <div className="row">
+                                <button 
+                                    className='btn btn-primary col-6 m-auto'
+                                    onClick={
+                                        () => navigate(`/singleCharacter/${person.uid}`)
+                                    }
+                                >
+                                    Learn more!
+                                </button>
+                                <button className='btn btn-black col-2 m-auto p-auto border border-warning'>💛</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            {/* <div className="col">
-                <div className="card h-100">
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a short card.</p>
-                    </div>
-                </div>
-            </div>
-            <div className="col">
-                <div className="card h-100">
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-                    </div>
-                </div>
-            </div>
-            <div className="col">
-                <div className="card h-100">
-                    <img src="..." className="card-img-top" alt="..." />
-                    <div className="card-body">
-                        <h5 className="card-title">Card title</h5>
-                        <p className="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-            </div> */}
+                    )
+                })}
         </div>
     );
 };

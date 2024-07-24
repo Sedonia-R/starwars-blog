@@ -1,10 +1,16 @@
-.logo {
-    height: 10% !important;
-    width: auto !important;
+@media (min-width: 576px) {
+    .card-group.card-group-scroll {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+}
+
+.card-group.card-group-scroll > .card {
+    flex-basis: 35%;
 }
 
 .top-banner {
-    height: 50vh;
+    height: 50%;
 }
 
 .picture {
@@ -12,17 +18,21 @@
 }
 
 .single-details {
-    margin: auto;
+    margin: 20px auto;
     padding: 10px 10px;
     height: 100%;
-    height: 50vh;
+    height: 50%; /* how to make this the height of the rest of the page? */
 }
 
 .single-links {
-    font-size: x-small;
+    font-size: 12px;
     text-align: left;
 }
 
 ul {
     list-style-type: none;
+}
+
+.card-text {
+    padding-left: 0;
 }
