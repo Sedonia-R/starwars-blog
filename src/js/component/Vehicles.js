@@ -5,10 +5,6 @@ import { Context } from '../store/appContext';
 export const Vehicles = () => {
     const navigate = useNavigate();
     const { store, actions } = useContext(Context);
-    
-    useEffect(() => {
-        actions.getVehicles();
-    }, []);
 
     return (
         <div className="card-group card-group-scroll">   

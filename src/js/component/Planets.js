@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from 'react';
 import { Context } from '../store/appContext';
+import { useNavigate } from 'react-router';
 
 export const Planets = () => {
     const {store, actions} = useContext(Context);
-
-    useEffect(() => {
-        actions.getPlanets();
-    }, []);
+    const handleClick = (planetData) => {
+        actions.setPlanet(planetData);
+    }
+    const navigate = useNavigate();
 
     return (
             <div className="card-group card-group-scroll">
@@ -30,7 +31,17 @@ export const Planets = () => {
                                     <li>Climate: {planet.properties.climate}</li>
                                 </ul>
                                 <div className="row">
-                                    <button className='btn btn-primary col-6 m-auto'>Learn more!</button>
+                                    <button 
+                                        className='btn btn-primary col-6 m-auto'
+                                        onClick={
+                                            () => {
+                                                handleClick(`${planet.uid}`);
+                                                navigate(`/singlePlanet/${planet.uid}`)
+                                            }
+                                        }
+                                    >    
+                                        Learn more!
+                                    </button>
                                     <button className='btn btn-black col-2 m-auto p-auto border border-warning'>💛</button>
                                 </div>
                             </div>

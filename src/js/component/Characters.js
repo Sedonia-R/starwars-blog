@@ -5,10 +5,10 @@ import { Context } from '../store/appContext';
 export const Characters = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
+    const handleClick = (personData) => {
+        actions.setPerson(personData);
 
-    useEffect(() => {
-        actions.getPeople();
-    }, []);
+    }
 
     return (
         <div className="card-group card-group-scroll">   
@@ -35,7 +35,10 @@ export const Characters = () => {
                                 <button 
                                     className='btn btn-primary col-6 m-auto'
                                     onClick={
-                                        () => navigate(`/singleCharacter/${person.uid}`)
+                                        () => {
+                                            handleClick(`${person.uid}`);
+                                            navigate(`/singleCharacter/${person.uid}`)
+                                        }
                                     }
                                 >
                                     Learn more!

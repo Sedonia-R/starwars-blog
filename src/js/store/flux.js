@@ -2,12 +2,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			planets: [],
-			planet_details: [],
 			people: [],
-			people_details: [],
 			vehicles: [],
-			vehicle_details: [],
 			favorites: [],
+			person: [],
+			planet: [],
+			vehicle: [],
 		},
 		actions: {
 			getPlanets: async () => {
@@ -25,7 +25,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 							planets: [...getStore().planets, bodyResults.result]
 						})
 					}
+				} catch (error) {
+					console.log(error)
+				}
+			},
 
+			setPlanet: (id) => {
+				try {
+					for(let planet of getStore().planets) {
+						if(id == planet.uid){
+							setStore({
+								planet: planet
+							}) 
+						}
+					}
+					console.log(getStore().planet)
 				} catch (error) {
 					console.log(error)
 				}
@@ -51,6 +65,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			setPerson: (id) => {
+				try {
+					for(let person of getStore().people) {
+						if(id == person.uid){
+							setStore({
+								person: person
+							}) 
+						}
+					}
+					console.log(getStore().person)
+				} catch (error) {
+					console.log(error)
+				}
+			},
 
 			getVehicles: async () => {
 				try {
