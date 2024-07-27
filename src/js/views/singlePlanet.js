@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 
 export const SinglePlanet = (props) => {
 	const { store, actions } = useContext(Context);
-
 	return (
 		<>
 			<div className="container-fluid top-banner">
@@ -11,7 +10,11 @@ export const SinglePlanet = (props) => {
 					<img src={`https://starwars-visualguide.com/assets/img/planets/${store.planet.uid}.jpg`} className="col-4 picture" alt="..." />
 						<div className="col-8 pt-4 pb-4 border-start border-warning">
 							<h1 className="text-warning">{store.planet.properties.name}</h1>
-							<p className="text-white">Luke Skywalker is a fictional character in the Star Wars franchise. He was introduced in the original film trilogy and also appears in the sequel trilogy. Raised as a moisture farmer on the planet Tatooine, Luke joins the Rebel Alliance and becomes a pivotal figure in the struggle against the Galactic Empire. He trains as a Jedi under Obi-Wan Kenobi and Yoda, and eventually confronts his father, the Sith Lord Darth Vader. Years later, Luke trains his nephew Ben Solo and mentors the scavenger Rey. Luke is the twin brother of Leia Organa.</p>
+							<p className="text-white">Star Wars is an American epic space opera media franchise created by George Lucas, which began with the eponymous 1977 film[a] and quickly became a worldwide pop culture phenomenon. The franchise has been expanded into various films and other media, including television series, video games, novels, comic books, theme park attractions, and themed areas, comprising an all-encompassing fictional universe.[b] Star Wars is one of the highest-grossing media franchises of all time.
+
+The original 1977 film, retroactively subtitled Episode IV: A New Hope, was followed by the sequels Episode V: The Empire Strikes Back (1980) and Episode VI: Return of the Jedi (1983), forming the original Star Wars trilogy. Lucas later returned to the series to write and direct a prequel trilogy, consisting of Episode I: The Phantom Menace (1999), Episode II: Attack of the Clones (2002), and Episode III: Revenge of the Sith (2005). In 2012, Lucas sold his production company to Disney, relinquishing his ownership of the franchise. This led to a sequel trilogy, consisting of Episode VII: The Force Awakens (2015), Episode VIII: The Last Jedi (2017), and Episode IX: The Rise of Skywalker (2019).
+
+All nine films, collectively referred to as the "Skywalker Saga", were nominated for Academy Awards, with wins going to the first two releases. Together with the theatrical live action "anthology" films Rogue One (2016) and Solo (2018), the combined box office revenue of the films equated to over US$10 billion, making Star Wars the third-highest-grossing film franchise of all time.</p>
 						</div>
 				</div>
 			</div>

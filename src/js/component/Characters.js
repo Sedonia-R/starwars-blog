@@ -7,7 +7,6 @@ export const Characters = () => {
     const navigate = useNavigate();
     const handleClick = (personData) => {
         actions.setPerson(personData);
-
     }
 
     return (
@@ -43,7 +42,16 @@ export const Characters = () => {
                                 >
                                     Learn more!
                                 </button>
-                                <button className='btn btn-black col-2 m-auto p-auto border border-warning'>💛</button>
+                                <button 
+                                    className='btn btn-black col-2 m-auto p-auto border border-warning'
+                                    onClick={
+                                        () => {
+                                            actions.setFavorite("person", person._id)
+                                        }
+                                    }   
+                                >
+                                    💛
+                                </button>
                             </div>
                         </div>
                     </div>

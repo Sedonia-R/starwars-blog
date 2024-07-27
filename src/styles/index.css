@@ -36,3 +36,15 @@ ul {
 .card-text {
     padding-left: 0;
 }
+
+.fa-trash-alt {
+    margin-left: 20px !important;
+}
+
+.fa-trash-alt:hover {
+    color: orange;
+}
+
+.favorites {
+    text-align: right !important;
+}

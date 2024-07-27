@@ -5,6 +5,9 @@ import { Context } from '../store/appContext';
 export const Vehicles = () => {
     const navigate = useNavigate();
     const { store, actions } = useContext(Context);
+    const handleClick = (vehicleData) => {
+        actions.setVehicle(vehicleData);
+    }
 
     return (
         <div className="card-group card-group-scroll">   
@@ -31,12 +34,24 @@ export const Vehicles = () => {
                             <button 
                                 className='btn btn-primary col-6 m-auto'
                                 onClick={
-                                    () => navigate(`/singleCharacter/${vehicle.uid}`)
+                                    () => {
+                                        handleClick(`${vehicle.uid}`);
+                                        navigate(`/singleVehicle/${vehicle.uid}`)
+                                    }
                                 }
                             >
                                 Learn more!
                             </button>
-                            <button className='btn btn-black col-2 m-auto p-auto border border-warning'>💛</button>
+                            <button 
+                                className='btn btn-black col-2 m-auto p-auto border border-warning'
+                                onClick={
+                                    () => {
+                                        actions.setFavorite("vehicle", vehicle._id)
+                                    }
+                                }   
+                            >
+                                💛
+                            </button>
                         </div>
                     </div>
                 </div>

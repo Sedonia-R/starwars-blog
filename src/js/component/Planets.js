@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router';
 
 export const Planets = () => {
     const {store, actions} = useContext(Context);
+    const navigate = useNavigate();
     const handleClick = (planetData) => {
         actions.setPlanet(planetData);
     }
-    const navigate = useNavigate();
 
     return (
             <div className="card-group card-group-scroll">

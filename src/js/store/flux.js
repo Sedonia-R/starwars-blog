@@ -10,6 +10,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicle: [],
 		},
 		actions: {
+
+			setFavorite: (category, id) => {
+				// add liked item to favorites array
+				if(category == "person"){
+					for(let person of getStore().people) {
+						if(id == person._id){
+							setStore({
+								favorites: [...getStore().favorites, person.properties.name]
+							}) 
+						} 
+					}
+				}
+				else if(category == "planet"){
+					for(let planet of getStore().planets) {
+						if(id == planet._id){
+							setStore({
+								favorites: [...getStore().favorites, planet.properties.name]
+							}) 
+						}
+					}
+				}
+				else if(category == "vehicle"){
+					for(let vehicle of getStore().vehicles) {
+						if(id == vehicle._id){
+							setStore({
+								favorites: [...getStore().favorites, vehicle.properties.name]
+							}) 
+						}
+					} 
+				} 
+				console.log(getStore().favorites);
+			},
+
+			removeFavorite: () => {
+				// remove item from favorites array
+
+			},
+
 			getPlanets: async () => {
 				try {
 					const resp = await fetch("https://www.swapi.tech/api/planets");
@@ -95,6 +133,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 							vehicles: [...getStore().vehicles, bodyResults.result]
 						})
 					}
+				} catch (error) {
+					console.log(error)
+				}
+			},
+
+			setVehicle: (id) => {
+				try {
+					for(let vehicle of getStore().vehicles) {
+						if(id == vehicle.uid){
+							setStore({
+								vehicle: vehicle
+							}) 
+						}
+					}
+					console.log(getStore().vehicle)
 				} catch (error) {
 					console.log(error)
 				}
