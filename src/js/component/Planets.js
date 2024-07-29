@@ -42,7 +42,16 @@ export const Planets = () => {
                                     >    
                                         Learn more!
                                     </button>
-                                    <button className='btn btn-black col-2 m-auto p-auto border border-warning'>💛</button>
+                                    <button 
+                                        className='btn btn-black col-2 m-auto p-auto border border-warning'
+                                        onClick={
+                                            () => {
+                                                actions.setFavorite("planet", planet._id)
+                                            }
+                                        }   
+                                    >
+                                        💛
+                                    </button>
                                 </div>
                             </div>
 

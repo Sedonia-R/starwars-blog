@@ -19,14 +19,14 @@ export const Navbar = () => {
 					</button>
 					<ul className="dropdown-menu dropdown-menu-end">
 						<button className="dropdown-item favorites" type="button">
-                        {store.favorites.map(favorite => {
+                        {store.favorites.map((favorite, index) => {
                             return (
-								<li>
+								<li key={index}>
 									{favorite}
 										<i className="fas fa-trash-alt" 
 											onClick={
 												() => {
-													handleClick(`${favorite.uid}`);
+													handleClick(`${favorite}`);
 												}
 											}
 										>

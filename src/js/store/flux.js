@@ -40,12 +40,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					} 
 				} 
-				console.log(getStore().favorites);
 			},
 
-			removeFavorite: () => {
-				// remove item from favorites array
-
+			removeFavorite: (name) => {
+				setStore({
+					favorites: [...getStore().favorites.filter((items)=> name != items)]
+				})
 			},
 
 			getPlanets: async () => {
